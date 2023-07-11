@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Checkout SCM') {
             steps {
-                git branch: 'master', url: 'https://github.com/Fairez-Rashid/PetClinic'
+                git 'https://github.com/Fairez-Rashid/jenkins-docker-maven-java-webapp.git'
+                
             }
         }
 
