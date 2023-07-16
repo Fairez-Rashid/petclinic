@@ -23,21 +23,21 @@ pipeline {
                 bat "echo %CD%"
             }
         }
-         stage('Deploy Artifact to remote Windows server') {
-             steps {
-         withCredentials([usernamePassword(usernameVariable: 'tomcat', passwordVariable: 'Tomcat@123456')]) {
-          script {
-            def sourceFilePath = 'C:\data\jenkins_home\workspace\jenkins_ci_pipeline\target\java-web-app-1.0.war'
-            def targetServer = '20.24.71.63'
-            def targetUser = env.USERNAME
-            def targetPassword = env.PASSWORD
+      //    stage('Deploy Artifact to remote Windows server') {
+      //        steps {
+      //    withCredentials([usernamePassword(usernameVariable: 'tomcat', passwordVariable: 'Tomcat@123456')]) {
+      //     script {
+      //       def sourceFilePath = 'C:\data\jenkins_home\workspace\jenkins_ci_pipeline\target\java-web-app-1.0.war'
+      //       def targetServer = '20.24.71.63'
+      //       def targetUser = env.USERNAME
+      //       def targetPassword = env.PASSWORD
 
-            // Copy the WAR file to the remote server using SCP
-            sshCommand remote: targetServer, user: targetUser, password: targetPassword, command: "scp ${sourceFilePath} ${targetUser}@${targetServer}:C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps"
-          }
-        }
-      }
-        }        
+      //       // Copy the WAR file to the remote server using SCP
+      //       sshCommand remote: targetServer, user: targetUser, password: targetPassword, command: "scp ${sourceFilePath} ${targetUser}@${targetServer}:C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps"
+      //     }
+      //   }
+      // }
+      //   }        
 
         
 
