@@ -18,8 +18,26 @@ pipeline {
         stage('Maven package') {
             steps {
                 bat "mvn package -Dmaven.test.skip=true"
+                bat "%CD%"
             }
         }
+      //   stage('Deploy Artifact to remote Windows server') {
+      //       steps {
+      //   withCredentials([usernamePassword(credentialsId: 'YOUR_SSH_CREDENTIALS_ID', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+      //     script {
+      //       def sourceFilePath = 'path/to/your/war/file.war'
+      //       def targetServer = 'TARGET_SERVER_IP'
+      //       def targetUser = env.USERNAME
+      //       def targetPassword = env.PASSWORD
+
+      //       // Copy the WAR file to the remote server using SCP
+      //       sshCommand remote: targetServer, user: targetUser, password: targetPassword, command: "scp ${sourceFilePath} ${targetUser}@${targetServer}:C:/path/on/target/server"
+      //     }
+      //   }
+      // }
+      //   }        
+
+        
 
         // stage('Archive artifacts') {
         //     steps {
