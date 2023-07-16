@@ -5,6 +5,7 @@ pipeline {
         stage('Checkout SCM') {
             steps {
                 git 'https://github.com/Fairez-Rashid/jenkins-docker-maven-java-webapp.git'
+                bat "echo source code downloaded "
                 
             }
         }
@@ -12,13 +13,14 @@ pipeline {
         stage('Maven compile') {
             steps {
                 bat "mvn clean compile"
+                bat "echo maven compile completed"
             }
         }
 
         stage('Maven package') {
             steps {
                 bat "mvn package -Dmaven.test.skip=true"
-                bat "%CD%"
+                bat "echo %CD%"
             }
         }
       //   stage('Deploy Artifact to remote Windows server') {
