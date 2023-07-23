@@ -35,14 +35,11 @@ pipeline {
      //   }
         stage('Deploy Maven Artifact') {
             steps {
-               // ansiblePlaybook becomeUser: 'ubuntu', installation: 'ansible', inventory: '/home/ubuntu/inventory/inventory.ini', playbook: '/home/ubuntu/del.yml'         }
+               // ansiblePlaybook becomeUser: 'ubuntu', installation: 'ansible', inventory: '/home/ubuntu/inventory/inventory.ini', playbook: '/home/ubuntu/del.yml'      
                //   ansiblePlaybook become: true, becomeUser: 'ubuntu', installation: 'ansible', inventory: '/home/ubuntu/inventory/inventory.ini', playbook: '/home/ubuntu/del.yml'  
                ansiblePlaybook becomeUser: 'ubuntu', installation: 'ansible', inventory: '/home/ubuntu/inventory/inventory.ini', playbook: '/home/ubuntu/del.yml', sudoUser: root            
-
 }
-
-
 
     }
 }
-
+}
