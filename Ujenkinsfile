@@ -25,11 +25,19 @@ pipeline {
             }
         }
         stage('Maven Deploy') {
-            steps {
+           // steps {
                 sh "pwd"
                // sh "ansible-playbook -i /home/ubuntu/inventory/inventory.ini /home/ubuntu/del.yml"
                // sh "War file deployed on remote tomcat server "
+           // }
+            steps {
+                // Change the workspace for this specific task
+                dir("/home/ubuntu") {
+                    sh "pwd"
+                    sh "ansible-playbook -i /home/ubuntu/inventory/inventory.ini /home/ubuntu/del.yml"
+                }
             }
+        
         }
 
     }
