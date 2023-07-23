@@ -35,7 +35,7 @@ pipeline {
      //   }
         stage('Deploy Maven Artifact') {
             steps {
-                ansiblePlaybook becomeUser: 'ubuntu', installation: 'ansible', inventory: '/home/ubuntu/inventory/inventory.ini', playbook: '/home/ubuntu/del.yml', sudo: true, sudoUser: 'ubuntu'            }
+                ansiblePlaybook becomeUser: 'ubuntu', installation: 'ansible', inventory: '/home/ubuntu/inventory/inventory.ini', playbook: '/home/ubuntu/del.yml'         }
         }
 
 
