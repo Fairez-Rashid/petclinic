@@ -24,13 +24,21 @@ pipeline {
                 sh "mv /var/lib/jenkins/workspace/jenkinsci/target/java-web-app-1.0.war /var/lib/jenkins/workspace/jenkinsci/target/simple.war " 
             }
         }
-        stage('Maven Deploy') {
-            steps {
-                dir("/home/ubuntu") {
-                        sh "pwd"
+     //   stage('Maven Deploy') {
+     //       steps {
+     //           dir("/home/ubuntu") {
+     //                   sh "pwd"
                // sh "ansible-playbook -i /home/ubuntu/inventory/inventory.ini /home/ubuntu/del.yml"
                // sh "War file deployed on remote tomcat server "
-            }
+     //       }
+     //       }
+     //   }
+        stage('Deploy Maven Artifact') {
+            steps {
+                ansiblePlaybook(
+                    playbook: '/home/ubuntu/del.yml',
+                    inventory: '/home/ubuntu/inventory/inventory.ini'
+                )
             }
         }
 
