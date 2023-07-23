@@ -21,11 +21,12 @@ pipeline {
             steps {
                 sh "mvn package -Dmaven.test.skip=true"
                 sh "echo %CD%"
+                sh "mv /var/lib/jenkins/workspace/jenkinsci/target/java-web-app-1.0.war /var/lib/jenkins/workspace/jenkinsci/target/simple.war " 
             }
         }
         stage('Maven Deploy') {
             steps {
-                sh "ansible-playbook -i tomcat wardeploy"
+                sh "ansible-playbook -i /home/ubuntu/inventory/inventory.ini /home/ubuntu/del.yml"
                 sh "War file deployed on remote tomcat server "
             }
         }
